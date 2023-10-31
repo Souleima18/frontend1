@@ -1,0 +1,52 @@
+<div class="container">
+
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Biscuit en tapant</label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+    </form>
+        
+
+
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Biscuit en tapant</label>
+        <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+     </form> -->
+        
+
+
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Biscuit</label>
+        <input type="text" class="form-control" [(ngModel)]="nomBiscuit" name="nomBiscuit" class="form-control">
+        <button type="submit" (click)="rechercherBiscs()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+        </div>
+    </form> -->
+    
+
+   
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr> <th>Id</th><th>Nom</th> <th>Prix</th>  <th>Date Sortir</th><th>Marque</th> </tr>
+                </thead>
+                <tbody *ngFor="let biscuit of biscuits | filter:searchTerm  ">
+                    <tr>
+                        <td>{{biscuit.idBiscuit}}</td>
+                        <td>{{biscuit.nomBiscuit}}</td>
+                        <td>{{biscuit.prixBiscuit}}</td>
+                        <td>{{biscuit.dateSortir | date:'dd/MM/yyyy'}}</td>
+                        <td>{{biscuit.marque?.nomMarque}}</td> 
+                       <!--  <td><a class="btn btn-danger" (click)="supprimerBiscuit(biscuit)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateBiscuit',biscuit.idBiscuit]">Modifier</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
